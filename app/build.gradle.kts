@@ -69,6 +69,8 @@ dependencies {
 
     //System Ui Controller
     implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.googleid)
 
     //test
     testImplementation(libs.junit)

@@ -1,0 +1,49 @@
+package com.jecsdev.mywalletapp.feature_authentication.data.repository
+
+import android.content.Context
+import com.jecsdev.mywalletapp.feature_authentication.repository.AuthRepository
+import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
+import com.jecsdev.mywalletapp.presentation.signin.GoogleAuthClient
+import com.jecsdev.mywalletapp.presentation.signin.SignInResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class AuthRepositoryImplementation @Inject constructor(private val googleAuthClient: GoogleAuthClient) :
+    AuthRepository {
+    private var currentUserData: UserData? = null
+    override suspend fun googleSignIn(context: Context): SignInResult {
+        return withContext(Dispatchers.IO) {
+            try {
+                googleAuthClient.signIn(context)
+
+                val signInResult = googleAuthClient.getUserSigned()
+                if (signInResult.data != null) {
+                    currentUserData = signInResult.data
+                }
+
+                signInResult
+            } catch (e: Exception) {
+                SignInResult(data = null, errorMessage = e.message)
+            }
+        }
+    }
+
+    override fun googleSignOut() {
+        googleAuthClient.signOut()
+        currentUserData = null
+    }
+
+    override fun getSignedInUser(): UserData? {
+        return currentUserData ?: googleAuthClient.getSignedUser().also {data ->
+            currentUserData = data
+        }
+    }
+
+    override fun getUserId(): String? {
+        return currentUserData?.userId
+    }
+
+}
