@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlinAndroidKsp)
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -63,7 +65,6 @@ dependencies {
     implementation(libs.androidx.material)
     implementation(libs.androidx.material3)
 
-
     //Multidex
     implementation(libs.androidx.multidex)
 
@@ -85,6 +86,10 @@ dependencies {
 
     //coil
     implementation(libs.coil.compose)
+
+    //hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     //Coroutines
     implementation(libs.kotlinx.coroutines.core)

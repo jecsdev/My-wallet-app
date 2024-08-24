@@ -7,15 +7,17 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
-composeBom = "2024.06.00"
+composeBom = "2024.08.00"
 androidx-lifecycle = "2.8.4"
 androidx-navigation = "2.7.7"
 compose-material-icons-extended = "1.6.8"
 androidx-hilt = "1.2.0"
 kotlinx-coroutines = "1.7.3"
-firebase-bom = "33.1.2"
+firebase-bom = "33.2.0"
 firebaseAuthKtx = "23.0.0"
 googleid = "1.1.1"
+hiltVersion = "2.49"
+kspVersion = "1.9.0-1.0.13"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,8 +51,12 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android" , version.ref = "hiltVersion"}
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler" , version.ref = "hiltVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref ="kspVersion" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref ="hiltVersion" }
 
