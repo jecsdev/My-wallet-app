@@ -14,12 +14,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,11 +30,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jecsdev.mywalletapp.ui.state.SignInState
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
+import com.jecsdev.mywalletapp.presentation.uihelpers.InputType
+import com.jecsdev.mywalletapp.ui.composables.textfield.SimpleTextField
 import com.jecsdev.mywalletapp.ui.theme.navyBlueColor
 
 /**
@@ -72,10 +72,10 @@ fun LogInScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxHeight()
         ) {
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(64.dp))
             Image(
                 painterResource(
-                    id = R.drawable.ic_launcher_background
+                    id = R.drawable.my_wallet_app_logo
                 ),
                 contentDescription = null,
                 modifier = Modifier
@@ -83,43 +83,30 @@ fun LogInScreen(
                     .width(360.dp)
             )
             Spacer(modifier = Modifier.height(12.dp))
-            TextField(
-                value = email,
+            SimpleTextField(
+                textTyped = email,
                 onValueChange = {
                     email = it
                 },
-                modifier = Modifier.fillMaxWidth(),
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = lightGrayColor,
-                    cursorColor = Color.DarkGray,
-                    disabledLabelColor = navyBlueColor, unfocusedIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    placeholderColor = navyBlueColor
-                ), shape = RoundedCornerShape(8.dp), singleLine = true, placeholder = {
-                    Text(text = stringResource(R.string.email))
-                }
+                inputType = InputType.EMAIL,
+                isSingleLine = true,
+                labelValue = stringResource(R.string.email)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            TextField(
-                value = password,
+            SimpleTextField(
+                textTyped = password,
                 onValueChange = {
                     password = it
                 },
-                modifier = Modifier.fillMaxWidth(),
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = lightGrayColor,
-                    cursorColor = Color.DarkGray,
-                    disabledLabelColor = navyBlueColor, unfocusedIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    placeholderColor = navyBlueColor
-                ), shape = RoundedCornerShape(8.dp), singleLine = true, placeholder = {
-                    Text(text = stringResource(R.string.password))
-                }
+                inputType = InputType.PASSWORD,
+                isSingleLine = true,
+                labelValue = stringResource(R.string.password)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Row(modifier = Modifier.fillMaxWidth(),
+            Row(
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
-            ){
+            ) {
                 Text(
                     text = stringResource(R.string.forgot_password)
                 )
@@ -128,7 +115,7 @@ fun LogInScreen(
             Button(
                 onClick = onSignInClick,
                 shape = RoundedCornerShape(20.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = navyBlueColor),
+                colors = ButtonDefaults.buttonColors(containerColor = navyBlueColor),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp)
@@ -145,11 +132,14 @@ fun LogInScreen(
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Row (modifier = Modifier.fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp),
                 horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically){
-                Divider(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                HorizontalDivider(
                     modifier = Modifier.weight(1f),
                     color = Color.LightGray
                 )
@@ -157,9 +147,9 @@ fun LogInScreen(
                 Text(
                     text = "ó",
                     color = Color.Gray
-                    )
+                )
                 Spacer(modifier = Modifier.width(8.dp))
-                Divider(
+                HorizontalDivider(
                     modifier = Modifier.weight(1f),
                     color = Color.LightGray
                 )
@@ -167,12 +157,15 @@ fun LogInScreen(
             Button(
                 onClick = onSignInClick,
                 shape = RoundedCornerShape(20.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                    contentColor = Color.Black
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp)
             ) {
-                Row{
+                Row {
                     Image(
                         painter = painterResource(R.drawable.google_color_icon),
                         contentDescription = stringResource(R.string.google_icon_description),
@@ -189,5 +182,10 @@ fun LogInScreen(
             }
         }
     }
+}
 
+@Preview(showBackground = true)
+@Composable
+fun LogInScreenPreview() {
+    LogInScreen(state = SignInState(), onSignInClick = {})
 }

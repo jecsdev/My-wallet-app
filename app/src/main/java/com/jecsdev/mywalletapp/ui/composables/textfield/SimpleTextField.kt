@@ -2,7 +2,6 @@ package com.jecsdev.mywalletapp.ui.composables.textfield
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -17,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.presentation.uihelpers.InputType
 import com.jecsdev.mywalletapp.ui.theme.brownGrayColor
@@ -38,15 +36,14 @@ fun SimpleTextField(
     onValueChange: (String) -> Unit,
     isSingleLine: Boolean,
     inputType: InputType,
-    modifier: Modifier
-) {
+    modifier: Modifier = Modifier
+){
     var textValue by rememberSaveable {
         mutableStateOf(if (!textTyped.isNullOrEmpty()) textTyped else "")
     }
     TextField(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp)
             .background(color = Color.Transparent),
         value = textValue,
         colors = TextFieldDefaults.colors(
