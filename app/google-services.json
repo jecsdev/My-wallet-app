@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33752498799",
+    "project_id": "my-wallet-app-8b886",
+    "storage_bucket": "my-wallet-app-8b886.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33752498799:android:55c6d55257a7248b1ec39a",
+        "android_client_info": {
+          "package_name": "com.jecsdev.mywalletapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPYxfmVSmMHdvH5Sea0lswyG8azaX8MkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
