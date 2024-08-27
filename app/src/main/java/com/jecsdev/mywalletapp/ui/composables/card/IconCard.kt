@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
+import com.jecsdev.mywalletapp.ui.theme.lightPurpleGray
 
 
 /**
@@ -23,7 +23,7 @@ import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
 fun IconCard(painter: Painter, modifier: Modifier) {
     Card(modifier = modifier.size(80.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = lightGrayColor),
+        colors = CardDefaults.cardColors(containerColor = lightPurpleGray),
         ) {
 
         Image(

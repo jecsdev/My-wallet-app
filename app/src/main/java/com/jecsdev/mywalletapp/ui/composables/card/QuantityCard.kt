@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
+import com.jecsdev.mywalletapp.ui.theme.lightPurpleGray
 
 /**
  * Represents the Composable to show the Loans quantity.
@@ -33,7 +33,7 @@ fun QuantityCard(headerText: String, quantity: Int, modifier: Modifier) {
             .width(176.dp)
             .height(120.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = lightGrayColor)
+        colors = CardDefaults.cardColors(containerColor = lightPurpleGray)
     ) {
         Column(
             modifier = modifier
@@ -60,7 +60,7 @@ fun QuantityCard(headerText: String, quantity: Int, modifier: Modifier) {
 fun QuantityCardPreview() {
     val modifier = Modifier
     QuantityCard(
-        headerText = stringResource(id = R.string.active_loans),
+        headerText = stringResource(id = R.string.active_plannings),
         quantity = 10,
         modifier = modifier
     )

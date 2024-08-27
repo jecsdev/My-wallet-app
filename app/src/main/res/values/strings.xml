@@ -13,7 +13,7 @@
     <string name="sign_in">Iniciar sesión</string>
     <string name="forgot_password">¿Olvidaste la contraseña?</string>
     <string name="power_icon">Power icon</string>
-    <string name="active_loans">Préstamos activos</string>
+    <string name="active_plannings">Planificaciones creadas</string>
     <string name="active_loan">Préstamos activo</string>
     <string name="you_have">Tienes</string>
     <string name="credited_balance">Balance acreditado</string>

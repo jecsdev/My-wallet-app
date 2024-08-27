@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.presentation.uihelpers.InputType
 import com.jecsdev.mywalletapp.ui.theme.brownGrayColor
-import com.jecsdev.mywalletapp.ui.theme.ghostColor
-import com.jecsdev.mywalletapp.ui.theme.navyBlueColor
+import com.jecsdev.mywalletapp.ui.theme.lightPurpleGray
+import com.jecsdev.mywalletapp.ui.theme.darkSteelBlue
 
 /**
  * Composable to use to create simple text fields.
@@ -47,12 +47,12 @@ fun SimpleTextField(
             .background(color = Color.Transparent),
         value = textValue,
         colors = TextFieldDefaults.colors(
-            cursorColor = navyBlueColor,
-            disabledLabelColor = navyBlueColor,
-            focusedIndicatorColor = navyBlueColor,
+            cursorColor = darkSteelBlue,
+            disabledLabelColor = darkSteelBlue,
+            focusedIndicatorColor = darkSteelBlue,
             unfocusedIndicatorColor = Color.Transparent,
-            focusedContainerColor = ghostColor,
-            unfocusedContainerColor = ghostColor
+            focusedContainerColor = lightPurpleGray,
+            unfocusedContainerColor = lightPurpleGray
         ),
         onValueChange = { value ->
             textValue = value

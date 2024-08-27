@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.ui.theme.ghostColor
-import com.jecsdev.mywalletapp.ui.theme.navyBlueColor
+import com.jecsdev.mywalletapp.ui.theme.darkSteelBlue
 
 @Composable
 fun DropDown(
@@ -61,8 +61,8 @@ fun DropDown(
                 .fillMaxWidth(),
             shape = RoundedCornerShape(8.dp),
             colors = TextFieldDefaults.colors(
-                cursorColor = navyBlueColor,
-                disabledLabelColor = navyBlueColor,
+                cursorColor = darkSteelBlue,
+                disabledLabelColor = darkSteelBlue,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedContainerColor = ghostColor,

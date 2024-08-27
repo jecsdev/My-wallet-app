@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
+import com.jecsdev.mywalletapp.ui.theme.lightPurpleGray
 
 /**
  * Composable to show the borrower transaction resume.
@@ -33,7 +33,7 @@ import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
 fun BorrowerTransactionsResumeCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = lightGrayColor),
+        colors = CardDefaults.cardColors(containerColor = lightPurpleGray),
         shape = RoundedCornerShape(8.dp)
     ) {
         Row(

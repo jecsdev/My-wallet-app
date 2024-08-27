@@ -12,15 +12,13 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.jecsdev.mywalletapp.ui.viewmodels.AuthViewModel
-import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.presentation.navigation.NavGraph
 import com.jecsdev.mywalletapp.ui.theme.MyWalletAppTheme
-import com.jecsdev.mywalletapp.ui.theme.phantomGrayColor
+import com.jecsdev.mywalletapp.ui.theme.lightLavender
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,11 +32,10 @@ class MainActivity : ComponentActivity() {
             MyWalletAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = colorResource(R.color.phantom_gray_color)
+                    color = lightLavender
                 ) {
                     val systemUiController = rememberSystemUiController()
-                    systemUiController.setStatusBarColor(phantomGrayColor)
-
+                    systemUiController.setSystemBarsColor(lightLavender)
                     Box(
                         modifier = Modifier
                             .fillMaxSize()

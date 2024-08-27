@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.ui.theme.lightGrayColor
+import com.jecsdev.mywalletapp.ui.theme.lightPurpleGray
 import com.jecsdev.mywalletapp.utils.formatters.StringFormatter
 
 /**
@@ -31,7 +31,7 @@ fun BalanceCard(headerText: String, balance: Double,modifier: Modifier){
             .width(176.dp)
             .height(120.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = lightGrayColor)
+        colors = CardDefaults.cardColors(containerColor = lightPurpleGray)
     ) {
         Column(
             modifier = modifier

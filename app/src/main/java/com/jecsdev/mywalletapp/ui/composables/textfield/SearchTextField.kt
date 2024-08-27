@@ -17,13 +17,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.ui.theme.ghostColor
-import com.jecsdev.mywalletapp.ui.theme.navyBlueColor
+import com.jecsdev.mywalletapp.ui.theme.darkSteelBlue
 
 @Composable
 fun SearchTextField(
@@ -42,9 +41,9 @@ fun SearchTextField(
             .background(color = Color.Transparent),
         value = searchValue,
         colors = TextFieldDefaults.colors(
-            cursorColor = navyBlueColor,
-            disabledLabelColor = navyBlueColor,
-            focusedIndicatorColor = navyBlueColor,
+            cursorColor = darkSteelBlue,
+            disabledLabelColor = darkSteelBlue,
+            focusedIndicatorColor = darkSteelBlue,
             unfocusedIndicatorColor = Color.Transparent,
             focusedContainerColor = ghostColor,
             unfocusedContainerColor = ghostColor

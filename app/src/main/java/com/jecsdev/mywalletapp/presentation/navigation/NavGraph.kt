@@ -30,7 +30,11 @@ fun NavGraph(
             LaunchedEffect(key1 = Unit) {
                 if (authViewModel.getSignedUser() != null) {
                     navController.navigate(Destination.Home.route)
-                } else if (state.isSuccessful) {
+                }
+            }
+
+            LaunchedEffect(key1 = state.isSuccessful) {
+                if (state.isSuccessful) {
                     navController.navigate(Destination.Home.route)
                     authViewModel.resetState()
                 }
@@ -48,7 +52,7 @@ fun NavGraph(
                 onSignOut = {
                     lifeCycleOwner.lifecycleScope.launch {
                         authViewModel.signOut()
-                        navController.popBackStack()
+                        navController.navigateUp()
                     }
                 },
                 navController = navController

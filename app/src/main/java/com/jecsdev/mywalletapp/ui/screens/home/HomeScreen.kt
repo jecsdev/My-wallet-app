@@ -107,7 +107,7 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             QuantityCard(
-                headerText = stringResource(R.string.active_loans),
+                headerText = stringResource(R.string.active_plannings),
                 quantity = 200, modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)

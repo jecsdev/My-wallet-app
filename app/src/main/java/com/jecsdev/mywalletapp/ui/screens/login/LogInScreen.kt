@@ -37,7 +37,8 @@ import com.jecsdev.mywalletapp.ui.state.SignInState
 import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.presentation.uihelpers.InputType
 import com.jecsdev.mywalletapp.ui.composables.textfield.SimpleTextField
-import com.jecsdev.mywalletapp.ui.theme.navyBlueColor
+import com.jecsdev.mywalletapp.ui.theme.darkSteelBlue
+import com.jecsdev.mywalletapp.ui.theme.googleButtonColor
 
 /**
  * Composable that shows Sign In Screen
@@ -115,7 +116,7 @@ fun LogInScreen(
             Button(
                 onClick = onSignInClick,
                 shape = RoundedCornerShape(20.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = navyBlueColor),
+                colors = ButtonDefaults.buttonColors(containerColor = darkSteelBlue),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 16.dp, end = 16.dp)
@@ -158,8 +159,8 @@ fun LogInScreen(
                 onClick = onSignInClick,
                 shape = RoundedCornerShape(20.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    contentColor = Color.Black
+                    containerColor = googleButtonColor,
+                    contentColor = Color.White
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
