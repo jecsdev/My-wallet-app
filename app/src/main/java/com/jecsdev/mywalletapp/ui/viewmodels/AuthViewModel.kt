@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jecsdev.mywalletapp.ui.state.SignInState
 import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
-import com.jecsdev.mywalletapp.feature_authentication.repository.AuthRepository
+import com.jecsdev.mywalletapp.feature_authentication.domain.repository.AuthRepository
 import com.jecsdev.mywalletapp.presentation.signin.SignInResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
