@@ -1,4 +1,4 @@
-package com.jecsdev.mywalletapp.feature_authentication.repository
+package com.jecsdev.mywalletapp.feature_authentication.domain.repository
 
 import android.content.Context
 import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData

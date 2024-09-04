@@ -1,6 +1,6 @@
 package com.jecsdev.mywalletapp.utils.constants
 
-const val firebaseClientId = ""
+const val firebaseClientId = "33752498799-v05flg01m867t2m2bvke63pkgd5108uh.apps.googleusercontent.com"
 
 object ExceptionConstants {
     const val EXCEPTION_TAG = "Exception"

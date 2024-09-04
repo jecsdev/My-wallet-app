@@ -1,7 +1,7 @@
 package com.jecsdev.mywalletapp.feature_authentication.data.repository
 
 import android.content.Context
-import com.jecsdev.mywalletapp.feature_authentication.repository.AuthRepository
+import com.jecsdev.mywalletapp.feature_authentication.domain.repository.AuthRepository
 import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
 import com.jecsdev.mywalletapp.presentation.signin.GoogleAuthClient
 import com.jecsdev.mywalletapp.presentation.signin.SignInResult
