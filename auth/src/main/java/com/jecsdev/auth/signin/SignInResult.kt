@@ -1,6 +1,6 @@
-package com.jecsdev.mywalletapp.presentation.signin
+package com.jecsdev.auth.signin
 
-import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
+import com.jecsdev.auth.data.model.UserData
 
 /**
  * This class the Sign In result when user authenticates

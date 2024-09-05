@@ -1,10 +1,10 @@
-package com.jecsdev.mywalletapp.feature_authentication.data.repository
+package com.jecsdev.auth.data.repository
 
 import android.content.Context
-import com.jecsdev.mywalletapp.feature_authentication.domain.repository.AuthRepository
-import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
-import com.jecsdev.mywalletapp.presentation.signin.GoogleAuthClient
-import com.jecsdev.mywalletapp.presentation.signin.SignInResult
+import com.jecsdev.auth.domain.repository.AuthRepository
+import com.jecsdev.auth.data.model.UserData
+import com.jecsdev.auth.signin.GoogleAuthClient
+import com.jecsdev.auth.signin.SignInResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

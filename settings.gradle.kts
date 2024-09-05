@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "My wallet app"
 include(":app")
- 
+include(":auth")

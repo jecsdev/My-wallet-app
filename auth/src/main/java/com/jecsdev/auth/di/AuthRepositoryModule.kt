@@ -1,8 +1,8 @@
-package com.jecsdev.mywalletapp.feature_authentication.di
+package com.jecsdev.auth.di
 
-import com.jecsdev.mywalletapp.feature_authentication.data.repository.AuthRepositoryImplementation
-import com.jecsdev.mywalletapp.feature_authentication.domain.repository.AuthRepository
-import com.jecsdev.mywalletapp.presentation.signin.GoogleAuthClient
+import com.jecsdev.auth.data.repository.AuthRepositoryImplementation
+import com.jecsdev.auth.domain.repository.AuthRepository
+import com.jecsdev.auth.signin.GoogleAuthClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

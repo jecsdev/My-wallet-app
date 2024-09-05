@@ -1,4 +1,4 @@
-package com.jecsdev.mywalletapp.presentation.signin
+package com.jecsdev.auth.signin
 
 import android.content.Context
 import android.util.Log
@@ -11,12 +11,11 @@ import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingExcept
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
-import com.jecsdev.mywalletapp.utils.constants.ExceptionConstants.GOOGLE_ID_TOKEN_PARSING_EXCEPTION_TAG
-import com.jecsdev.mywalletapp.utils.constants.ExceptionConstants.LOGIN_TAG
-import com.jecsdev.mywalletapp.utils.constants.ExceptionConstants.SIGN_IN_EXCEPTION_TAG
-import com.jecsdev.mywalletapp.utils.constants.firebaseClientId
+import com.jecsdev.auth.utils.ExceptionConstants.GOOGLE_ID_TOKEN_PARSING_EXCEPTION_TAG
+import com.jecsdev.auth.utils.ExceptionConstants.LOGIN_TAG
+import com.jecsdev.auth.utils.ExceptionConstants.SIGN_IN_EXCEPTION_TAG
+import com.jecsdev.auth.data.model.UserData
+import com.jecsdev.auth.utils.firebaseClientId
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
@@ -32,7 +31,7 @@ class GoogleAuthClient @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
     private val auth = Firebase.auth
-    private val emptyString = context.getString(R.string.empty_string)
+    private val emptyString = ""
     private val credentialManager = CredentialManager.create(context)
     private lateinit var signInResult: SignInResult
 

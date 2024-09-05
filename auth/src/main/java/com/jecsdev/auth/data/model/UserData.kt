@@ -1,4 +1,4 @@
-package com.jecsdev.mywalletapp.feature_authentication.data.model
+package com.jecsdev.auth.data.model
 
 /**
  * This class represents the data from the user.
