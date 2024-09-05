@@ -4,9 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jecsdev.mywalletapp.ui.state.SignInState
-import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
-import com.jecsdev.mywalletapp.feature_authentication.domain.repository.AuthRepository
-import com.jecsdev.mywalletapp.presentation.signin.SignInResult
+import com.jecsdev.auth.signin.SignInResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel(){
+class AuthViewModel @Inject constructor(private val authRepository: com.jecsdev.auth.domain.repository.AuthRepository) : ViewModel(){
     private val _authState = MutableStateFlow<SignInResult?>(null)
 
     private val _state = MutableStateFlow(SignInState())
@@ -51,6 +49,6 @@ class AuthViewModel @Inject constructor(private val authRepository: AuthReposito
         _authState.value = null
     }
 
-    fun getSignedUser(): UserData? = authRepository.getSignedInUser()
+    fun getSignedUser(): com.jecsdev.auth.data.model.UserData? = authRepository.getSignedInUser()
 
 }

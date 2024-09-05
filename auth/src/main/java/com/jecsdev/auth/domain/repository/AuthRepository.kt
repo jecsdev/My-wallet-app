@@ -1,8 +1,8 @@
-package com.jecsdev.mywalletapp.feature_authentication.domain.repository
+package com.jecsdev.auth.domain.repository
 
 import android.content.Context
-import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
-import com.jecsdev.mywalletapp.presentation.signin.SignInResult
+import com.jecsdev.auth.data.model.UserData
+import com.jecsdev.auth.signin.SignInResult
 
 /**
  * Authentication Repository interface.

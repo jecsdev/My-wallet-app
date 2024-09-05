@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.jecsdev.auth.data.model.UserData
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.feature_authentication.data.model.UserData
 import com.jecsdev.mywalletapp.presentation.navigation.Destination
 import com.jecsdev.mywalletapp.ui.composables.card.BalanceCard
 import com.jecsdev.mywalletapp.ui.composables.card.BorrowerTransactionsResumeCard

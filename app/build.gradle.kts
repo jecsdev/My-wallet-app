@@ -53,6 +53,9 @@ android {
 }
 
 dependencies {
+    //Import modules
+    implementation(project(":auth"))
+
     // Base implementations
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

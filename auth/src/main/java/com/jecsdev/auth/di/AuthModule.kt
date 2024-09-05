@@ -1,8 +1,8 @@
-package com.jecsdev.mywalletapp.feature_authentication.di
+package com.jecsdev.auth.di
 
 import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
-import com.jecsdev.mywalletapp.presentation.signin.GoogleAuthClient
+import com.jecsdev.auth.signin.GoogleAuthClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

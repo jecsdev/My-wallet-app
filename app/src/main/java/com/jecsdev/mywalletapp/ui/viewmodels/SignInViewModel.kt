@@ -2,7 +2,7 @@ package com.jecsdev.mywalletapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.jecsdev.mywalletapp.ui.state.SignInState
-import com.jecsdev.mywalletapp.presentation.signin.SignInResult
+import com.jecsdev.auth.signin.SignInResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
