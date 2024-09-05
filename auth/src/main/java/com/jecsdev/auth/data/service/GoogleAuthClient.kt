@@ -1,4 +1,4 @@
-package com.jecsdev.auth.signin
+package com.jecsdev.auth.data.service
 
 import android.content.Context
 import android.util.Log
@@ -15,6 +15,7 @@ import com.jecsdev.auth.utils.ExceptionConstants.GOOGLE_ID_TOKEN_PARSING_EXCEPTI
 import com.jecsdev.auth.utils.ExceptionConstants.LOGIN_TAG
 import com.jecsdev.auth.utils.ExceptionConstants.SIGN_IN_EXCEPTION_TAG
 import com.jecsdev.auth.data.model.UserData
+import com.jecsdev.auth.domain.entities.SignInResult
 import com.jecsdev.auth.utils.firebaseClientId
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.coroutineScope

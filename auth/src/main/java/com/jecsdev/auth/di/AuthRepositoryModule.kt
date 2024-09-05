@@ -2,7 +2,7 @@ package com.jecsdev.auth.di
 
 import com.jecsdev.auth.data.repository.AuthRepositoryImplementation
 import com.jecsdev.auth.domain.repository.AuthRepository
-import com.jecsdev.auth.signin.GoogleAuthClient
+import com.jecsdev.auth.data.service.GoogleAuthClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
