@@ -1,8 +1,8 @@
 package com.jecsdev.auth.domain.repository
 
 import android.content.Context
-import com.jecsdev.auth.data.model.UserData
-import com.jecsdev.auth.signin.SignInResult
+import com.jecsdev.auth.domain.entities.SignInResult
+import com.jecsdev.auth.domain.entities.User
 
 /**
  * Authentication Repository interface.
@@ -10,6 +10,6 @@ import com.jecsdev.auth.signin.SignInResult
 interface AuthRepository {
     suspend fun googleSignIn(context: Context): SignInResult
     fun googleSignOut()
-    fun getSignedInUser(): UserData?
+    fun getSignedInUser(): User?
     fun getUserId(): String?
 }

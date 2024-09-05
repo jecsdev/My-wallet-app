@@ -2,9 +2,9 @@ package com.jecsdev.auth.data.repository
 
 import android.content.Context
 import com.jecsdev.auth.domain.repository.AuthRepository
-import com.jecsdev.auth.data.model.UserData
-import com.jecsdev.auth.signin.GoogleAuthClient
-import com.jecsdev.auth.signin.SignInResult
+import com.jecsdev.auth.data.service.GoogleAuthClient
+import com.jecsdev.auth.domain.entities.SignInResult
+import com.jecsdev.auth.domain.entities.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -13,7 +13,8 @@ import javax.inject.Singleton
 @Singleton
 class AuthRepositoryImplementation @Inject constructor(private val googleAuthClient: GoogleAuthClient) :
     AuthRepository {
-    private var currentUserData: UserData? = null
+    private var currentUser: User? = null
+
     override suspend fun googleSignIn(context: Context): SignInResult {
         return withContext(Dispatchers.IO) {
             try {
@@ -21,7 +22,7 @@ class AuthRepositoryImplementation @Inject constructor(private val googleAuthCli
 
                 val signInResult = googleAuthClient.getUserSigned()
                 if (signInResult.data != null) {
-                    currentUserData = signInResult.data
+                    currentUser = signInResult.data.toDomain()
                 }
 
                 signInResult
@@ -33,17 +34,15 @@ class AuthRepositoryImplementation @Inject constructor(private val googleAuthCli
 
     override fun googleSignOut() {
         googleAuthClient.signOut()
-        currentUserData = null
+        currentUser = null
     }
 
-    override fun getSignedInUser(): UserData? {
-        return currentUserData ?: googleAuthClient.getSignedUser().also {data ->
-            currentUserData = data
-        }
+    override fun getSignedInUser(): User? {
+        return currentUser
     }
 
     override fun getUserId(): String? {
-        return currentUserData?.userId
+        return currentUser?.userId
     }
 
 }

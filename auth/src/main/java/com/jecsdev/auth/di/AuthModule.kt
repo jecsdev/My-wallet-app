@@ -2,7 +2,7 @@ package com.jecsdev.auth.di
 
 import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
-import com.jecsdev.auth.signin.GoogleAuthClient
+import com.jecsdev.auth.data.service.GoogleAuthClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.jecsdev.auth.signin
+package com.jecsdev.auth.domain.entities
 
 import com.jecsdev.auth.data.model.UserData
 

@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.jecsdev.auth.data.model.UserData
+import com.jecsdev.auth.domain.entities.User
 import com.jecsdev.mywalletapp.R
 import com.jecsdev.mywalletapp.presentation.navigation.Destination
 import com.jecsdev.mywalletapp.ui.composables.card.BalanceCard
@@ -43,7 +43,7 @@ import com.jecsdev.mywalletapp.ui.composables.card.QuantityCard
  */
 @Composable
 fun HomeScreen(
-    userData: UserData?,
+    userData: User?,
     onSignOut: () -> Unit,
     navController: NavController?
 ) {
@@ -55,7 +55,7 @@ fun HomeScreen(
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
-            if (userData?.profilePictureUri != null && userData.userName.isNotEmpty()) {
+            if (userData?.profilePictureUri != null && userData.userName?.isNotEmpty() == true) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(3f)
@@ -226,7 +226,7 @@ fun navigateToCreateLoanScreen(navController: NavController){
 @Composable
 fun DashboardScreenPreview() {
     HomeScreen(
-        userData = UserData(
+        userData = User(
             userName = stringResource(R.string.john_doe),
             userId = stringResource(R.string.sample_number),
             profilePictureUri = stringResource(id = R.string.empty_string)
