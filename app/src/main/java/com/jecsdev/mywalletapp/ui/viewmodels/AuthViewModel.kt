@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jecsdev.mywalletapp.ui.state.SignInState
-import com.jecsdev.auth.data.model.UserData
-import com.jecsdev.auth.domain.repository.AuthRepository
 import com.jecsdev.auth.signin.SignInResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
