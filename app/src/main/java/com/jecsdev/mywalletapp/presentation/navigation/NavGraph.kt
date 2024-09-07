@@ -22,9 +22,9 @@ fun NavGraph(
     authViewModel: AuthViewModel
 ) {
     val lifeCycleOwner = LocalLifecycleOwner.current
+    val state by authViewModel.state.collectAsStateWithLifecycle()
     NavHost(navController = navController, startDestination = Destination.LogIn.route) {
         composable(Destination.LogIn.route) {
-            val state by authViewModel.signInState.collectAsStateWithLifecycle()
 
             //Sign in user if there a signed user automatically.
             LaunchedEffect(key1 = Unit) {
@@ -42,11 +42,12 @@ fun NavGraph(
 
             LogInScreen(state = state, onSignInClick = {
                 lifeCycleOwner.lifecycleScope.launch {
-                    authViewModel.signIn(context)
+                    authViewModel.signIn(context = context)
                 }
             })
         }
         composable(Destination.Home.route) {
+
             HomeScreen(
                 userData = authViewModel.getSignedUser(),
                 onSignOut = {

@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jecsdev.mywalletapp.ui.state.SignInState
-import com.jecsdev.auth.domain.entities.SignInResult
 import com.jecsdev.auth.domain.entities.User
-import com.jecsdev.auth.domain.repository.AuthRepository
+import com.jecsdev.auth.domain.usecase.GetGoogleSignIn
+import com.jecsdev.auth.domain.usecase.GetGoogleSignOut
+import com.jecsdev.auth.utils.common.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,42 +16,56 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel(){
-    private val _authState = MutableStateFlow<SignInResult?>(null)
+class AuthViewModel @Inject constructor(
+    private val getGoogleSignIn: GetGoogleSignIn,
+    private val getGoogleSignOut: GetGoogleSignOut
+) : ViewModel() {
+    private val _authState = MutableStateFlow(SignInState())
 
     private val _state = MutableStateFlow(SignInState())
-    val signInState = _state.asStateFlow()
+    val state = _state.asStateFlow()
 
     /**
      * Handles the result in Sign In
      * @param result this is the Sign In Result
      */
-    private fun onSignInResult(result: SignInResult){
-        _state.update {signInState->
+    private fun onSignInResult(result: Result<User>) {
+        _state.update { signInState ->
             signInState.copy(
-                isSuccessful = result.data != null,
-                isError = result.errorMessage
+                isSuccessful = result is Result.Success,
+                isError = if (result is Result.Error) result.exception.message else null
             )
         }
     }
 
-    fun resetState(){
+    fun resetState() {
         _state.update { SignInState() }
     }
 
     fun signIn(context: Context) {
-       viewModelScope.launch {
-           val result = authRepository.googleSignIn(context)
-            _authState.value = result
-           onSignInResult(result)
-       }
+        viewModelScope.launch {
+            val result = getGoogleSignIn(context)
+            _authState.value = if (result is Result.Success) {
+                SignInState(
+                    isSuccessful = true,
+                    isLoading = false,
+                    isError = null,
+                    user = result.data
+                )
+            } else {
+                SignInState(isError = (result as Result.Error).exception.message)
+            }
+            onSignInResult(result)
+        }
     }
 
     fun signOut() {
-        authRepository.googleSignOut()
-        _authState.value = null
+        getGoogleSignOut()
+        _authState.value = SignInState()
     }
 
-    fun getSignedUser(): User? = authRepository.getSignedInUser()
+    fun getSignedUser(): User? {
+        return _authState.value.user
+    }
 
 }
