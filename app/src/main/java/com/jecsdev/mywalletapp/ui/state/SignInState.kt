@@ -1,5 +1,7 @@
 package com.jecsdev.mywalletapp.ui.state
 
+import com.jecsdev.auth.domain.entities.User
+
 /**
  * Manages the state from Sign In.
  * @param isSuccessful returns if was a successful transaction.
@@ -9,5 +11,6 @@ package com.jecsdev.mywalletapp.ui.state
 data class SignInState(
     val isSuccessful: Boolean = false,
     val isLoading: Boolean = false,
-    val isError: String? = null
+    val isError: String? = null,
+    var user: User? = null
 )
