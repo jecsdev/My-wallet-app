@@ -1,12 +1,17 @@
 package com.jecsdev.mywalletapp.presentation.navigation
 
 import android.content.Context
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,7 +29,9 @@ fun NavGraph(
     val lifeCycleOwner = LocalLifecycleOwner.current
     val state by authViewModel.state.collectAsStateWithLifecycle()
     NavHost(navController = navController, startDestination = Destination.LogIn) {
-        composable<Destination.LogIn> {
+        composable<Destination.LogIn> (
+            exitTransition = { slideOutToLeft(this) }
+        ){
 
             //Sign in user if there a signed user automatically.
             LaunchedEffect(key1 = Unit) {
@@ -46,7 +53,10 @@ fun NavGraph(
                 }
             })
         }
-        composable<Destination.Home> {
+        composable<Destination.Home> (
+            enterTransition = { slideInToLeft(this) },
+            exitTransition = { slideOutToRight(this) }
+        ) {
             HomeScreen(
                 userData = authViewModel.getSignedUser(),
                 onSignOut = {
@@ -59,4 +69,24 @@ fun NavGraph(
             )
         }
     }
+}
+
+fun slideInToLeft(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : EnterTransition {
+   return scope.slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left,
+        animationSpec = tween(300))
+}
+
+fun slideInToRight(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : EnterTransition {
+    return scope.slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right,
+        animationSpec = tween(300))
+}
+
+fun slideOutToLeft(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : ExitTransition {
+    return scope.slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left,
+        animationSpec = tween(300))
+}
+
+fun slideOutToRight(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : ExitTransition {
+    return scope.slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right,
+        animationSpec = tween(300))
 }
