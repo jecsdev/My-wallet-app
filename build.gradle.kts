@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.kotlinAndroidKsp) apply false
     alias(libs.plugins.gms.googleServices) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.compose) apply false
 }
