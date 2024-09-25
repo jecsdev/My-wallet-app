@@ -43,7 +43,6 @@ fun NavGraph(
             LaunchedEffect(key1 = state.isSuccessful) {
                 if (state.isSuccessful) {
                     navController.navigate(Destination.Home)
-                    authViewModel.resetState()
                 }
             }
 

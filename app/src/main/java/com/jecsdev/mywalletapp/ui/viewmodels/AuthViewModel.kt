@@ -10,6 +10,7 @@ import com.jecsdev.auth.domain.usecase.GetGoogleSignOut
 import com.jecsdev.auth.utils.common.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -22,8 +23,11 @@ class AuthViewModel @Inject constructor(
 ) : ViewModel() {
     private val _authState = MutableStateFlow(SignInState())
 
+    private val _isUserLoggedIn = MutableStateFlow(false)
+    val isUserLoggedIn: StateFlow<Boolean> = _isUserLoggedIn
+
     private val _state = MutableStateFlow(SignInState())
-    val state = _state.asStateFlow()
+    val state: StateFlow<SignInState> = _state.asStateFlow()
 
     /**
      * Handles the result in Sign In
@@ -33,12 +37,16 @@ class AuthViewModel @Inject constructor(
         _state.update { signInState ->
             signInState.copy(
                 isSuccessful = result is Result.Success,
+                isUserLoggedIn = result is Result.Success,
                 isError = if (result is Result.Error) result.exception.message else null
             )
         }
+        _isUserLoggedIn.value = result is Result.Success
     }
 
-    fun resetState() {
+    private fun resetState() {
+        _authState.value = SignInState()
+        _isUserLoggedIn.value = false
         _state.update { SignInState() }
     }
 
@@ -48,6 +56,7 @@ class AuthViewModel @Inject constructor(
             _authState.value = if (result is Result.Success) {
                 SignInState(
                     isSuccessful = true,
+                    isUserLoggedIn = true,
                     isLoading = false,
                     isError = null,
                     user = result.data
@@ -61,7 +70,7 @@ class AuthViewModel @Inject constructor(
 
     fun signOut() {
         getGoogleSignOut()
-        _authState.value = SignInState()
+        resetState()
     }
 
     fun getSignedUser(): User? {
