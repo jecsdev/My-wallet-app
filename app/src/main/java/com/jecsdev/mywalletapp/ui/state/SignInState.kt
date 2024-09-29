@@ -10,6 +10,7 @@ import com.jecsdev.auth.domain.entities.User
  */
 data class SignInState(
     val isSuccessful: Boolean = false,
+    val isUserLoggedIn: Boolean = false,
     val isLoading: Boolean = false,
     val isError: String? = null,
     var user: User? = null

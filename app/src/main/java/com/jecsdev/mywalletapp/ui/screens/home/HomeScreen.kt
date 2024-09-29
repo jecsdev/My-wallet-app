@@ -1,5 +1,6 @@
 package com.jecsdev.mywalletapp.ui.screens.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,11 +33,11 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.jecsdev.auth.domain.entities.User
 import com.jecsdev.mywalletapp.R
-import com.jecsdev.mywalletapp.presentation.navigation.Destination
 import com.jecsdev.mywalletapp.ui.composables.card.BalanceCard
 import com.jecsdev.mywalletapp.ui.composables.card.BorrowerTransactionsResumeCard
 import com.jecsdev.mywalletapp.ui.composables.card.IconCard
 import com.jecsdev.mywalletapp.ui.composables.card.QuantityCard
+import com.jecsdev.mywalletapp.ui.theme.lightLavender
 
 /**
  * DashboardScreen view.
@@ -47,10 +48,12 @@ fun HomeScreen(
     onSignOut: () -> Unit,
     navController: NavController?
 ) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 24.dp, end = 24.dp)
+            .background(lightLavender)
+            .padding(start = 16.dp, end = 16.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -132,13 +135,13 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(
-                modifier = Modifier.width(80.dp) ,
+                modifier = Modifier.width(80.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 IconCard(
                     painter = painterResource(id = R.drawable.loan_icon_action),
-                    modifier = Modifier.clickable { navController?.let{ navigation -> navigateToCreateLoanScreen(navigation)} }
+                    modifier = Modifier.clickable { navController?.let { } }
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
@@ -172,11 +175,7 @@ fun HomeScreen(
             ) {
                 IconCard(painter = painterResource(id = R.drawable.user_icon),
                     modifier = Modifier.clickable {
-                        navController?.let { navigation ->
-                            navigateToBorrowersScreen(
-                                navigation, userId = userData?.userId
-                            )
-                        }
+
                     }
                 )
                 Spacer(modifier = Modifier.height(4.dp))
@@ -201,22 +200,6 @@ fun HomeScreen(
             }
         }
     }
-}
-/**
- * Handles navigation to borrowers list screen.
- * @param navController navigation controller,
- * @param userId ID from current user.
- */
-fun navigateToBorrowersScreen(navController: NavController, userId: String?) {
-    navController.navigate(Destination.BorrowersList.route + "/$userId")
-}
-
-/**
- * Handles navigation to Create loan screen.
- * @param navController navigation controller.
- */
-fun navigateToCreateLoanScreen(navController: NavController){
-    navController.navigate(Destination.CreateLoan.route)
 }
 
 /*

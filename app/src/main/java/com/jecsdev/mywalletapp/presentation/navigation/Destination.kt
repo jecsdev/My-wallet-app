@@ -1,14 +1,22 @@
 package com.jecsdev.mywalletapp.presentation.navigation
 
+import kotlinx.serialization.Serializable
+
 /**
  * Class that handles the destinations from whole app.
- * @param route destination to navigate.
  */
-sealed class Destination(val route: String) {
-    object LogIn: Destination("login")
-    object Home: Destination("home")
-    object BorrowersList: Destination("borrowers_list")
-    object CreateBorrower: Destination("create_borrower")
-    object CreateLoan: Destination("create_loan")
-    object BorrowerDetails: Destination("borrower_details")
+@Serializable
+sealed class Destination() {
+   @Serializable
+   data object LogIn: Destination()
+   @Serializable
+   data object Home: Destination()
+   @Serializable
+   data object Expenses: Destination()
+   @Serializable
+   data object Income: Destination()
+   @Serializable
+   data object Budget: Destination()
+   @Serializable
+   data object Reports: Destination()
 }

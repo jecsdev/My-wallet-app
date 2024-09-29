@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.gms.googleServices)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -87,6 +89,9 @@ dependencies {
     //Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //Kotlin Serialization
+    implementation(libs.org.jetbrains.kotlinx.serialization.json)
 
     //coil
     implementation(libs.coil.compose)

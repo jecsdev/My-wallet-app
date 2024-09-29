@@ -1,26 +1,27 @@
 [versions]
-agp = "8.6.0"
-kotlin = "1.9.0"
+agp = "8.6.1"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.5"
+lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
-composeBom = "2024.09.00"
-androidx-lifecycle = "2.8.5"
-androidx-navigation = "2.8.0"
-compose-material-icons-extended = "1.7.0"
+composeBom = "2024.09.02"
+androidx-lifecycle = "2.8.6"
+compose-material-icons-extended = "1.7.2"
 androidx-hilt = "1.2.0"
 kotlinx-coroutines = "1.7.3"
-firebase-bom = "33.2.0"
+firebase-bom = "33.3.0"
 firebaseAuthKtx = "23.0.0"
 googleid = "1.1.1"
 hiltVersion = "2.49"
-kspVersion = "1.9.0-1.0.13"
+kspVersion = "2.0.0-1.0.22"
 gms-googleServices = "4.4.2"
 appcompat = "1.7.0"
 material = "1.12.0"
+composeNavigation = "2.8.1"
+serialization = "1.6.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,7 +43,6 @@ androidx-multidex = { module = "androidx.multidex:multidex", version = "2.0.1" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version = "0.28.0" }
 mockk = { module = "io.mockk:mockk", version = "1.13.7" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidx-hilt" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose-material-icons-extended" }
@@ -58,11 +58,15 @@ hilt-android = { group = "com.google.dagger", name = "hilt-android" , version.re
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler" , version.ref = "hiltVersion"}
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+org-jetbrains-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinAndroidKsp = { id = "com.google.devtools.ksp", version.ref ="kspVersion" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref ="hiltVersion" }
 gms-googleServices = { id = "com.google.gms.google-services", version.ref = "gms-googleServices"}
 android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
