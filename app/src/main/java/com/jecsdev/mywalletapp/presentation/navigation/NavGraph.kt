@@ -15,9 +15,13 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.jecsdev.mywalletapp.ui.screens.budget.BudgetScreen
+import com.jecsdev.mywalletapp.ui.screens.expenses.ExpensesScreen
 import com.jecsdev.mywalletapp.ui.viewmodels.AuthViewModel
 import com.jecsdev.mywalletapp.ui.screens.home.HomeScreen
+import com.jecsdev.mywalletapp.ui.screens.income.IncomeScreen
 import com.jecsdev.mywalletapp.ui.screens.login.LogInScreen
+import com.jecsdev.mywalletapp.ui.screens.reports.ReportsScreen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -29,10 +33,9 @@ fun NavGraph(
     val lifeCycleOwner = LocalLifecycleOwner.current
     val state by authViewModel.state.collectAsStateWithLifecycle()
     NavHost(navController = navController, startDestination = Destination.LogIn) {
-        composable<Destination.LogIn> (
+        composable<Destination.LogIn>(
             exitTransition = { slideOutToLeft(this) }
-        ){
-
+        ) {
             //Sign in user if there a signed user automatically.
             LaunchedEffect(key1 = Unit) {
                 if (authViewModel.getSignedUser() != null) {
@@ -52,7 +55,7 @@ fun NavGraph(
                 }
             })
         }
-        composable<Destination.Home> (
+        composable<Destination.Home>(
             enterTransition = { slideInToLeft(this) },
             exitTransition = { slideOutToRight(this) }
         ) {
@@ -67,25 +70,49 @@ fun NavGraph(
                 navController = navController
             )
         }
+        composable<Destination.Expenses>(
+            enterTransition = { slideInToLeft(this) }) {
+            ExpensesScreen()
+        }
+        composable<Destination.Income>(
+            enterTransition = { slideInToLeft(this) }) {
+            IncomeScreen()
+        }
+        composable<Destination.Budget>(
+            enterTransition = { slideInToLeft(this) }) {
+            BudgetScreen()
+        }
+        composable<Destination.Reports>(
+            enterTransition = { slideInToLeft(this) }) {
+            ReportsScreen()
+        }
     }
 }
 
-fun slideInToLeft(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : EnterTransition {
-   return scope.slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left,
-        animationSpec = tween(300))
+fun slideInToLeft(scope: AnimatedContentTransitionScope<NavBackStackEntry>): EnterTransition {
+    return scope.slideIntoContainer(
+        AnimatedContentTransitionScope.SlideDirection.Left,
+        animationSpec = tween(300)
+    )
 }
 
-fun slideInToRight(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : EnterTransition {
-    return scope.slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right,
-        animationSpec = tween(300))
+fun slideInToRight(scope: AnimatedContentTransitionScope<NavBackStackEntry>): EnterTransition {
+    return scope.slideIntoContainer(
+        AnimatedContentTransitionScope.SlideDirection.Right,
+        animationSpec = tween(300)
+    )
 }
 
-fun slideOutToLeft(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : ExitTransition {
-    return scope.slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left,
-        animationSpec = tween(300))
+fun slideOutToLeft(scope: AnimatedContentTransitionScope<NavBackStackEntry>): ExitTransition {
+    return scope.slideOutOfContainer(
+        AnimatedContentTransitionScope.SlideDirection.Left,
+        animationSpec = tween(300)
+    )
 }
 
-fun slideOutToRight(scope: AnimatedContentTransitionScope<NavBackStackEntry>) : ExitTransition {
-    return scope.slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right,
-        animationSpec = tween(300))
+fun slideOutToRight(scope: AnimatedContentTransitionScope<NavBackStackEntry>): ExitTransition {
+    return scope.slideOutOfContainer(
+        AnimatedContentTransitionScope.SlideDirection.Right,
+        animationSpec = tween(300)
+    )
 }

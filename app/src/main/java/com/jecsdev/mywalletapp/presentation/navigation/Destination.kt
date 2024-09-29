@@ -11,4 +11,12 @@ sealed class Destination() {
    data object LogIn: Destination()
    @Serializable
    data object Home: Destination()
+   @Serializable
+   data object Expenses: Destination()
+   @Serializable
+   data object Income: Destination()
+   @Serializable
+   data object Budget: Destination()
+   @Serializable
+   data object Reports: Destination()
 }

@@ -50,7 +50,8 @@ class MainActivity : ComponentActivity() {
                         Box(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .padding(paddingValues),
+                                .padding(paddingValues)
+                                .padding(top = paddingValues.calculateTopPadding()),
                             contentAlignment = Alignment.Center
                         ) {
                             NavGraph(
